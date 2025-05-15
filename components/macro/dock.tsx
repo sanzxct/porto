@@ -1,10 +1,10 @@
-import { Home, Fingerprint, Inbox, Star, Eye } from "lucide-react";
-import Link from "next/link";
+import Link from "next/link"
+import { Eye, Fingerprint, Home, Inbox, Star } from "lucide-react"
 
 export const Dock = () => {
   return (
-    <header className="flex justify-center items-end fixed bottom-4 md:bottom-8 w-full h-svh cursor-default z-10 pointer-events-none">
-      <nav className="flex items-center p-1 border rounded-[16px] bg-background text-foreground pointer-events-auto">
+    <header className="pointer-events-none fixed bottom-4 z-10 flex h-svh w-full cursor-default items-end justify-center md:bottom-8">
+      <nav className="pointer-events-auto flex items-center rounded-[16px] border bg-background p-1 text-foreground">
         <Link href="/" className="header-item">
           <Home className="size-4" />
         </Link>
@@ -22,5 +22,5 @@ export const Dock = () => {
         </Link>
       </nav>
     </header>
-  );
-};
+  )
+}

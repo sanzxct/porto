@@ -8,6 +8,6 @@ export const SITE_CONSTANT = {
     github: "https://github.com/msafdev",
     personalSite: "https://salmoon.vercel.app",
   },
-};
+}
 
-export type SiteConfig = typeof SITE_CONSTANT;
+export type SiteConfig = typeof SITE_CONSTANT

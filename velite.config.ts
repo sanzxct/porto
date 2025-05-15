@@ -1,12 +1,12 @@
-import { defineConfig, defineCollection, s } from "velite";
-import rehypeSlug from "rehype-slug";
-import rehypePrettyCode from "rehype-pretty-code";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import rehypePrettyCode from "rehype-pretty-code"
+import rehypeSlug from "rehype-slug"
+import { defineCollection, defineConfig, s } from "velite"
 
 const computedFields = <T extends { slug: string }>(data: T) => ({
   ...data,
   slugAsParams: data.slug.split("/").slice(1).join("/"),
-});
+})
 
 const posts = defineCollection({
   name: "Post",
@@ -26,7 +26,7 @@ const posts = defineCollection({
       author_email: s.string().max(99),
     })
     .transform(computedFields),
-});
+})
 
 export default defineConfig({
   root: "content",
@@ -55,4 +55,4 @@ export default defineConfig({
     ],
     remarkPlugins: [],
   },
-});
+})

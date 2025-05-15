@@ -1,44 +1,44 @@
-import Image from "next/image";
+import Image from "next/image"
+import Link from "next/link"
+import MemojiLaptop from "@/assets/icons/memoji-laptop.png"
+import Grain from "@/assets/images/grain.jpg"
 
-import MemojiLaptop from "@/assets/icons/memoji-laptop.png";
-import Grain from "@/assets/images/grain.jpg";
-import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import { Button } from "@/components/ui/button"
 
 export const HeroSection = () => {
   return (
-    <section id="hero" className="py-32 relative z-0 min-h-svh">
+    <section id="hero" className="relative z-0 min-h-svh py-32">
       {/* Mask */}
-      <div className="absolute pointer-events-none inset-0 -z-10 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]">
+      <div className="pointer-events-none absolute inset-0 -z-10 [mask-image:linear-gradient(to_bottom,transparent,black_30%,black_70%,transparent)]">
         <div
-          className="absolute pointer-events-none inset-0 -z-10 opacity-5 "
+          className="pointer-events-none absolute inset-0 -z-10 opacity-5"
           style={{
             backgroundImage: `url(${Grain.src})`,
           }}
         />
       </div>
 
-      <div className="container flex flex-col items-center gap-y-6 md:gap-y-8 z-0">
+      <div className="container z-0 flex flex-col items-center gap-y-6 md:gap-y-8">
         {/* Memoji */}
-        <div className="flex flex-col items-center justify-center max-w-lg">
+        <div className="flex max-w-lg flex-col items-center justify-center">
           <Image
             src={MemojiLaptop}
             alt="Image of Salman peeking from behind of a laptop"
             width={64}
             height={64}
           />
-          <div className="inline-flex gap-x-3 items-center border border-background/20 bg-foreground text-background h-fit w-fit px-3 py-2 rounded-lg">
-            <div className="size-2 rounded-full bg-green-500 relative" />
-            <p className="font-medium text-xs md:text-sm">Open to new things</p>
+          <div className="inline-flex h-fit w-fit items-center gap-x-3 rounded-lg border border-background/20 bg-foreground px-3 py-2 text-background">
+            <div className="relative size-2 rounded-full bg-green-500" />
+            <p className="text-xs font-medium md:text-sm">Open to new things</p>
           </div>
         </div>
 
         {/* Content */}
-        <div className="flex flex-col max-w-lg gap-y-4 z-0">
-          <h1 className="text-2xl md:text-3xl font-serif text-balance text-center">
+        <div className="z-0 flex max-w-lg flex-col gap-y-4">
+          <h1 className="text-balance text-center font-serif text-2xl md:text-3xl">
             Thoughtfully Designed and Engineered
           </h1>
-          <p className="text-xs md:text-base text-muted-foreground text-balance text-center">
+          <p className="text-balance text-center text-xs text-muted-foreground md:text-base">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat
             recusandae ratione nesciunt odio voluptatum tempora ex placeat
             dignissimos, doloremque ullam eum quo esse dolorum.
@@ -46,7 +46,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Button */}
-        <div className="flex items-center gap-x-4 flex-wrap justify-center gap-y-3 z-0">
+        <div className="z-0 flex flex-wrap items-center justify-center gap-x-4 gap-y-3">
           <Button size={"sm"}>
             <span>👋</span>
             <span>Let's connect</span>
@@ -59,5 +59,5 @@ export const HeroSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}

@@ -1,14 +1,14 @@
-import * as React from "react";
-import Image from "next/image";
-import * as runtime from "react/jsx-runtime";
+import * as React from "react"
+import * as runtime from "react/jsx-runtime"
+import Image from "next/image"
+import { ArrowRight } from "lucide-react"
 
-import { cn } from "@/lib/utils";
-import { ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils"
 
 const useMDXComponent = (code: string) => {
-  const fn = new Function(code);
-  return fn({ ...runtime }).default;
-};
+  const fn = new Function(code)
+  return fn({ ...runtime }).default
+}
 
 const components = {
   h1: ({ className, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => (
@@ -137,28 +137,28 @@ const components = {
     />
   ),
   Image,
-};
+}
 
 interface MdxProps {
-  code: string;
-  components?: Record<string, React.ComponentType>;
+  code: string
+  components?: Record<string, React.ComponentType>
 }
 
 export function MDXContent({ code, components }: MdxProps) {
-  const Component = useMDXComponent(code);
-  return <Component components={{ Image, ...components }} />;
+  const Component = useMDXComponent(code)
+  return <Component components={{ Image, ...components }} />
 }
 
 interface MdxProps {
-  code: string;
+  code: string
 }
 
 export function Mdx({ code }: MdxProps) {
-  const Component = useMDXComponent(code);
+  const Component = useMDXComponent(code)
 
   return (
     <div className="mdx">
       <Component components={components} />
     </div>
-  );
+  )
 }

@@ -1,40 +1,44 @@
-import { posts } from "#site/content";
-import { Mdx } from "@/components/blog/mdx";
-import { notFound } from "next/navigation";
+import { Metadata } from "next"
+import Image from "next/image"
+import { notFound } from "next/navigation"
+import { posts } from "#site/content"
 
-import { Metadata } from "next";
-import { SITE_CONSTANT } from "@/lib/constants";
-import { Tag } from "@/components/macro/tag";
-import Grain from "@/assets/images/grain.jpg";
+import { SITE_CONSTANT } from "@/lib/constants"
 
-import "@/styles/mdx.css";
-import Image from "next/image";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Mdx } from "@/components/blog/mdx"
+import { Tag } from "@/components/macro/tag"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
+import "@/styles/mdx.css"
+
+import { ArrowLeft } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
 
 interface PostPageProps {
   params: {
-    slug: string[];
-  };
+    slug: string[]
+  }
 }
 
 async function getPostFromParams(params: PostPageProps["params"]) {
-  const slug = params?.slug?.join("/");
-  const post = posts.find((post) => post.slugAsParams === slug);
+  const slug = params?.slug?.join("/")
+  const post = posts.find((post) => post.slugAsParams === slug)
 
-  return post;
+  return post
 }
 
 export async function generateMetadata({
   params,
 }: PostPageProps): Promise<Metadata> {
-  const post = await getPostFromParams(params);
+  const post = await getPostFromParams(params)
 
   if (!post) {
-    return {};
+    return {}
   }
 
-  const ogSearchParams = new URLSearchParams();
-  ogSearchParams.set("title", post.title);
+  const ogSearchParams = new URLSearchParams()
+  ogSearchParams.set("title", post.title)
 
   return {
     title: post.title,
@@ -60,28 +64,30 @@ export async function generateMetadata({
       description: post.description,
       images: [`/api/og?${ogSearchParams.toString()}`],
     },
-  };
+  }
 }
 
 export async function generateStaticParams(): Promise<
   PostPageProps["params"][]
 > {
-  return posts.map((post) => ({ slug: post.slugAsParams.split("/") }));
+  return posts.map((post) => ({ slug: post.slugAsParams.split("/") }))
 }
 
 export default async function PostPage({ params }: PostPageProps) {
-  const post = await getPostFromParams(params);
+  const post = await getPostFromParams(params)
 
   if (!post || !post.published) {
-    notFound();
+    notFound()
   }
 
   return (
-    <article className="py-32 relative z-0">
-      <div className="container flex flex-col items-center z-0">
+    <article className="relative z-0 py-32">
+      <div className="container z-0 flex flex-col items-center">
         <div className="max-w-xl">
-          <h1 className="mb-6 text-4xl font-serif text-center">{post.title}</h1>
-          <div className="flex items-center gap-3 mb-6 justify-center">
+          <h1 className="mb-6 text-center font-serif text-4xl">{post.title}</h1>
+
+          {/* Profile */}
+          <div className="mb-6 flex items-center justify-center gap-3">
             <Avatar className="rounded-md">
               <AvatarImage
                 src="https://github.com/msafdev.png"
@@ -90,16 +96,18 @@ export default async function PostPage({ params }: PostPageProps) {
               <AvatarFallback className="rounded-md">MS</AvatarFallback>
             </Avatar>
             <div className="flex flex-col">
-              <p className="text-foreground text-sm font-medium">
+              <p className="text-sm font-medium text-foreground">
                 {post.author}
               </p>
-              <p className="text-muted-foreground font-medium text-xs">
+              <p className="text-xs font-medium text-muted-foreground">
                 {post.author_email}
               </p>
             </div>
           </div>
-          <div className="aspect-video p-2 rounded-[20px] border bg-muted relative">
-            <div className="relative w-full h-full rounded-[12px] overflow-hidden bg-muted">
+
+          {/* Cover Image */}
+          <div className="relative aspect-video rounded-[20px] border bg-muted p-2">
+            <div className="relative h-full w-full overflow-hidden rounded-[12px] bg-muted">
               <Image
                 src={post.image}
                 alt={`Cover photo of /${post.slug}`}
@@ -108,14 +116,22 @@ export default async function PostPage({ params }: PostPageProps) {
               />
             </div>
           </div>
-          <div className="items-center justify-center flex gap-2 flex-wrap mt-4 mb-8">
-            {post.tags?.map((tag) => (
-              <Tag tag={tag} key={tag} />
-            ))}
+
+          {/* Tags */}
+          <div className="mb-8 mt-4 flex flex-wrap items-center justify-center gap-2">
+            {post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}
           </div>
+
+          {/* MDX Wrapper */}
           <Mdx code={post.body} />
+
+          <div className="mt-8 flex justify-center gap-3">
+            <Button variant={"default"} size={"icon"} className="size-8 p-0">
+              <ArrowLeft size={16} />
+            </Button>
+          </div>
         </div>
       </div>
     </article>
-  );
+  )
 }

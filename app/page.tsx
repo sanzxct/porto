@@ -1,5 +1,5 @@
-import { AboutSection } from "@/sections/about-section";
-import { HeroSection } from "@/sections/hero-section";
+import { AboutSection } from "@/sections/about-section"
+import { HeroSection } from "@/sections/hero-section"
 
 export default function Page() {
   return (
@@ -7,5 +7,5 @@ export default function Page() {
       <HeroSection />
       <AboutSection />
     </main>
-  );
+  )
 }
