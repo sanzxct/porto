@@ -6,8 +6,11 @@
   "trailingComma": "es5",
   "importOrder": [
     "^(react/(.*)$)|^(react$)",
+    "",
     "^(next/(.*)$)|^(next$)",
+    "",
     "<THIRD_PARTY_MODULES>",
+    "^lucide-react",
     "",
     "^@/types/(.*)$",
     "^@/lib/(.*)$",

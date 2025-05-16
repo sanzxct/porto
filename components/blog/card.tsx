@@ -1,4 +1,5 @@
 import Link from "next/link"
+
 import { Calendar } from "lucide-react"
 
 import { cn, formatDate } from "@/lib/utils"
@@ -39,7 +40,7 @@ export function Card({ slug, title, description, date, tags }: CardProps) {
           href={"/" + slug}
           className={cn(buttonVariants({ variant: "link" }), "py-0")}
         >
-          Read more →
+          Read more
         </Link>
       </div>
     </article>

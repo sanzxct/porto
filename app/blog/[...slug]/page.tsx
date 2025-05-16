@@ -1,19 +1,18 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
+
 import { posts } from "#site/content"
+import { ArrowLeft } from "lucide-react"
 
 import { SITE_CONSTANT } from "@/lib/constants"
 
 import { Mdx } from "@/components/blog/mdx"
 import { Tag } from "@/components/macro/tag"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
 
 import "@/styles/mdx.css"
-
-import { ArrowLeft } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
 
 interface PostPageProps {
   params: {
@@ -43,7 +42,7 @@ export async function generateMetadata({
   return {
     title: post.title,
     description: post.description,
-    authors: { name: SITE_CONSTANT.author },
+    authors: { name: SITE_CONSTANT.author, url: SITE_CONSTANT.links.github },
     openGraph: {
       title: post.title,
       description: post.description,
@@ -84,52 +83,10 @@ export default async function PostPage({ params }: PostPageProps) {
     <article className="relative z-0 py-32">
       <div className="container z-0 flex flex-col items-center">
         <div className="max-w-xl">
-          <h1 className="mb-6 text-center font-serif text-4xl">{post.title}</h1>
-
-          {/* Profile */}
-          <div className="mb-6 flex items-center justify-center gap-3">
-            <Avatar className="rounded-md">
-              <AvatarImage
-                src="https://github.com/msafdev.png"
-                alt="@msafdev"
-              />
-              <AvatarFallback className="rounded-md">MS</AvatarFallback>
-            </Avatar>
-            <div className="flex flex-col">
-              <p className="text-sm font-medium text-foreground">
-                {post.author}
-              </p>
-              <p className="text-xs font-medium text-muted-foreground">
-                {post.author_email}
-              </p>
-            </div>
-          </div>
-
-          {/* Cover Image */}
-          <div className="relative aspect-video rounded-[20px] border bg-muted p-2">
-            <div className="relative h-full w-full overflow-hidden rounded-[12px] bg-muted">
-              <Image
-                src={post.image}
-                alt={`Cover photo of /${post.slug}`}
-                fill
-                className="object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Tags */}
-          <div className="mb-8 mt-4 flex flex-wrap items-center justify-center gap-2">
-            {post.tags?.map((tag) => <Tag tag={tag} key={tag} />)}
-          </div>
+          <h1 className="text-3xl font-serif">{post.title}</h1>
 
           {/* MDX Wrapper */}
           <Mdx code={post.body} />
-
-          <div className="mt-8 flex justify-center gap-3">
-            <Button variant={"default"} size={"icon"} className="size-8 p-0">
-              <ArrowLeft size={16} />
-            </Button>
-          </div>
         </div>
       </div>
     </article>
