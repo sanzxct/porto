@@ -62,16 +62,13 @@ const components = {
     />
   ),
   ul: ({ className, ...props }: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className={cn("my-4 list-none", className)} {...props} />
+    <ul className={cn("my-4 list-disc pl-4", className)} {...props} />
   ),
   ol: ({ className, ...props }: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className={cn("my-4 list-decimal", className)} {...props} />
+    <ol className={cn("my-4 list-decimal pl-4", className)} {...props} />
   ),
   li: ({ className, ...props }: React.HTMLAttributes<HTMLLIElement>) => (
-    <div className="flex items-center gap-2 mt-2">
-      <ArrowRight size={12} />
-      <li className={cn("text-sm", className)} {...props} />
-    </div>
+    <li className={cn("text-sm", className)} {...props} />
   ),
   blockquote: ({
     className,

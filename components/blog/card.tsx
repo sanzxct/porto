@@ -4,7 +4,7 @@ import { Calendar } from "lucide-react"
 
 import { cn, formatDate } from "@/lib/utils"
 
-import { Tag } from "@/components/macro/tag"
+import { Tag } from "@/components/shared/tag"
 import { buttonVariants } from "@/components/ui/button"
 
 interface CardProps {

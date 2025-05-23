@@ -17,7 +17,7 @@ const calistoga = Calistoga({
 })
 
 export const metadata: Metadata = {
-  title: "MDX Template",
+  title: "Create Next App",
   description: "Made by @msafdev",
 }
 

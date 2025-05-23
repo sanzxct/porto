@@ -3,14 +3,10 @@ import Image from "next/image"
 import { notFound } from "next/navigation"
 
 import { posts } from "#site/content"
-import { ArrowLeft } from "lucide-react"
 
 import { SITE_CONSTANT } from "@/lib/constants"
 
 import { Mdx } from "@/components/blog/mdx"
-import { Tag } from "@/components/macro/tag"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 
 import "@/styles/mdx.css"
 
@@ -84,6 +80,15 @@ export default async function PostPage({ params }: PostPageProps) {
       <div className="container z-0 flex flex-col items-center">
         <div className="max-w-xl">
           <h1 className="text-3xl font-serif">{post.title}</h1>
+
+          <div className="relative aspect-video w-full rounded-xl overflow-hidden my-4">
+            <Image
+              src={post.image}
+              alt={`Banner for ${post.title}`}
+              fill
+              className="object-cover"
+            />
+          </div>
 
           {/* MDX Wrapper */}
           <Mdx code={post.body} />

@@ -1,7 +1,7 @@
 export const HeroSection = () => {
   return (
     <section id="hero" className="">
-      Hero Section
+      <h1>Hero Section</h1>
     </section>
   )
 }

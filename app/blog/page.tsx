@@ -1,5 +1,3 @@
-import { Metadata } from "next"
-
 import { posts } from "#site/content"
 
 import { sortPosts } from "@/lib/utils"

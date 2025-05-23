@@ -8,5 +8,3 @@ export const SITE_CONSTANT = {
     personalSite: "https://salmoon.vercel.app",
   },
 }
-
-export type SiteConfig = typeof SITE_CONSTANT

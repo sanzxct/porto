@@ -1,0 +1,129 @@
+---
+title: "MDX Cheatsheet"
+description: "Quick reference guide for writing MDX with markdown and JSX"
+date: 2025-05-23
+tags: ["mdx", "guide", "cheatsheet"]
+published: true
+image: "/images/blog/people.webp"
+author: "Salman"
+author_image: "https://avatars.githubusercontent.com/u/116475964?v=4"
+author_email: "faris.kocak@gmail.com"
+---
+
+Your quick reference to writing MDX content — Markdown with JSX superpowers.
+
+---
+
+## 📘 Basic Markdown
+
+### Headings
+
+```mdx
+## H2
+
+### H3
+
+#### H4
+```
+
+### Paragraphs
+
+Just write normal text. Separate paragraphs with an empty line.
+
+### Emphasis
+
+```mdx
+_italic_ or _italic_
+**bold** or **bold**
+```
+
+### Lists
+
+```mdx
+- Item
+- Another item
+
+1. First
+2. Second
+```
+
+### Links
+
+```mdx
+[OpenAI](https://openai.com)
+```
+
+### Images
+
+```mdx
+![Alt text](/images/example.jpg)
+```
+
+---
+
+## 🔤 Code
+
+### Inline Code
+
+```mdx
+Use \`inline-code\` like this.
+```
+
+### With Language (for syntax highlighting)
+
+<pre>
+```js
+function sayHi() {
+  return "👋";
+}
+```
+</pre>
+
+---
+
+## ⚛️ JSX in Markdown
+
+### Importing Components
+
+```mdx
+import MyComponent from "../components/MyComponent"
+```
+
+### Using Components
+
+```mdx
+<MyComponent someProp="value" />
+```
+
+---
+
+## 🧠 Frontmatter
+
+Declare metadata at the top of the file:
+
+```mdx
+---
+title: "My MDX Post"
+date: 2025-05-23
+tags: ["mdx", "blog"]
+published: true
+---
+```
+
+---
+
+## 🪄 Extras & Tips
+
+- Escape characters with \`\\\` (e.g., \\\*not italic\\\*)
+- Nest content inside custom components for layout control
+- Combine Tailwind CSS and MDX for powerful design
+- You can even use conditional rendering in your MDX!
+
+```jsx
+{true && <p>This is conditionally rendered JSX!</p>}
+````
+
+---
+
+Thanks for using this cheatsheet! 🎉
+Happy writing in MDX!
