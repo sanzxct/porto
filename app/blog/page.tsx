@@ -1,6 +1,8 @@
 import { posts } from "#site/content"
+import Link from "next/link"
 
 import { sortPosts } from "@/lib/utils"
+import { link } from "fs"
 
 export default async function Page() {
   const sortedPosts = sortPosts(posts.filter((post) => post.published))
@@ -12,9 +14,9 @@ export default async function Page() {
           {sortedPosts.map((post) => {
             const { title, slug } = post
             return (
-              <li key={title}>
-                <p>{title}</p>
-              </li>
+              <Link href={slug}>
+                {title}
+              </Link>
             )
           })}
         </ul>
